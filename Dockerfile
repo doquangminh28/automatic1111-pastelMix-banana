@@ -1,7 +1,7 @@
 FROM nvidia/cuda:11.7.1-runtime-ubuntu22.04
   
 # To use a different model, change the model URL below:
-ARG MODEL_URL='https://huggingface.co/andite/pastel-mix/resolve/main/pastelmix-better-vae-fp16.ckpt'
+ARG MODEL_URL='https://huggingface.co/andite/pastel-mix/resolve/main/pastelmix-better-vae-fp16.safetensors'
 
 # If you are using a private Huggingface model (sign in required to download) insert your Huggingface
 # access token (https://huggingface.co/settings/tokens) below:
@@ -40,4 +40,4 @@ ADD script.py extensions/banana/scripts/banana.py
 ADD app.py app.py
 ADD server.py server.py
 
-CMD ["python", "server.py", "--xformers", "--disable-safe-unpickle", "--lowram", "--no-hashing", "--listen", "--port", "8000"]
+CMD ["python", "server.py", "--xformers", "--disable-safe-unpickle", "--no-hashing", "--listen", "--port", "8000"]
